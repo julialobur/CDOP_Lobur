@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Voter Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ voter.name.first }} {{ voter.name.last }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Date of Birth:</strong> {{ voter.dob.date | date }}</p>
+      <p><strong>City:</strong> {{ voter.location.city }}</p>
+      <p><strong>Postcode:</strong> {{ voter.location.postcode }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

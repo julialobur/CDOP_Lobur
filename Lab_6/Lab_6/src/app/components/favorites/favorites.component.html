@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favorites</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">Back to Voter List</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let voter of favorites">
+      <ion-thumbnail slot="start">
+        <img [src]="voter.picture.thumbnail" alt="Voter Thumbnail">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ voter.name.first }} {{ voter.name.last }}</h2>
+        <p>Date of Birth: {{ voter.dob.date | date: 'mediumDate' }}</p>
+        <p>City: {{ voter.location.city }}, ZIP: {{ voter.location.postcode }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <!-- Кнопка для видалення виборця з фаворитів -->
+        <ion-button (click)="removeFromFavorites(voter)" color="danger">
+          Remove
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

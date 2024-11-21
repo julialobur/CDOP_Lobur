@@ -1,0 +1,64 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label>Ваше ім'я та прізвище:
+        <input type="text" formControlName="fullName" required />
+    </label>
+    <div *ngIf="userForm.get('fullName')?.invalid && userForm.get('fullName')?.touched">
+        Заповніть це поле.
+    </div>
+
+    <label>Введіть логін для сайту:
+        <input type="text" formControlName="username" required />
+    </label>
+    <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+        Логін може містити тільки латинські літери.
+    </div>
+
+    <label>Хто ви:
+        <input type="radio" formControlName="gender" value="М" /> М
+        <input type="radio" formControlName="gender" value="Ж" /> Ж
+    </label>
+    <div *ngIf="userForm.get('gender')?.invalid && userForm.get('gender')?.touched">
+        Будь ласка, виберіть стать.
+    </div>
+
+    <label>Введіть дату народження:
+        <input type="date" formControlName="birthDate" required />
+    </label>
+    <div *ngIf="userForm.get('birthDate')?.invalid && userForm.get('birthDate')?.touched">
+        Дата народження не може бути в майбутньому.
+    </div>
+
+    <label>Email:
+        <input type="email" formControlName="email" required />
+    </label>
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+        Будь ласка, введіть коректний email.
+    </div>
+
+    <label>Website(URL):
+        <input type="url" formControlName="website" />
+    </label>
+    <div *ngIf="userForm.get('website')?.invalid && userForm.get('website')?.touched">
+        Введіть коректний URL.
+    </div>
+
+    <label>Кредитна картка:
+        <input type="text" formControlName="creditCard" />
+    </label>
+    <div *ngIf="userForm.get('creditCard')?.invalid && userForm.get('creditCard')?.touched">
+        Введіть коректний номер кредитної картки (формат XXXX-XXXX-XXXX-XXXX).
+    </div>
+
+    <label>Телефон:
+        <input type="tel" formControlName="phone" />
+    </label>
+    <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+        Введіть коректний номер телефону (формат +380123456789).
+    </div>
+
+    <label>Повідомлення:
+        <textarea formControlName="message"></textarea>
+    </label>
+
+    <button type="submit" [disabled]="userForm.invalid">Відправити</button>
+</form>
